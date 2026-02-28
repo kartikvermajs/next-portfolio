@@ -85,7 +85,6 @@ export default function Hero() {
                         <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px]">
                             <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl animate-pulse" />
                             <div className="w-full h-full bg-card border border-border rounded-full overflow-hidden relative shadow-2xl flex items-center justify-center">
-                                {/* Placeholder Image - User to replace later */}
                                 <div className="text-muted text-lg font-medium flex flex-col items-center">
                                     <FileText className="w-12 h-12 mb-2 opacity-50" />
                                     <span>User Image</span>
