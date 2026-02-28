@@ -44,7 +44,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     {/* Navigation Links */}
-                    <div className="flex w-full md:w-auto justify-evenly md:justify-end md:gap-8 items-center h-full">
+                    <div className="hidden md:flex md:w-auto justify-end md:gap-8 items-center h-full">
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const isActive = activeSection === item.href.slice(1);
