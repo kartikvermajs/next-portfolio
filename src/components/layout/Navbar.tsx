@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Home, User, Briefcase, Code, Mail } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState("home");
@@ -33,11 +34,14 @@ export default function Navbar() {
         >
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                    {/* Desktop Logo */}
-                    <div className="hidden md:flex flex-shrink-0 items-center">
+                    {/* Logo & Theme Toggle */}
+                    <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto px-4 md:px-0 pt-3 md:pt-0">
                         <a href="#home" className="text-xl font-bold tracking-tighter text-foreground group">
                             Kartik<span className="text-accent">.</span>dev
                         </a>
+                        <div className="ml-4 flex items-center">
+                            <ThemeToggle />
+                        </div>
                     </div>
                     {/* Navigation Links */}
                     <div className="flex w-full md:w-auto justify-evenly md:justify-end md:gap-8 items-center h-full">
@@ -54,8 +58,8 @@ export default function Navbar() {
                                         isActive ? "text-accent" : "text-muted"
                                     )}
                                 >
-                                    <Icon className="h-5 w-5 mb-1 md:mb-0 md:mr-2 md:h-4 md:w-4" />
-                                    <span>{item.name}</span>
+                                    <Icon className="h-5 w-5 mb-1 md:mb-0 md:mr-2 md:h-4 md:w-4 lg:h-5 lg:w-5" />
+                                    <span className="text-[10px] md:text-sm lg:text-base">{item.name}</span>
                                     {isActive && (
                                         <span className="absolute -top-3 md:-bottom-2 w-1 h-1 md:w-full md:h-0.5 bg-accent rounded-full transition-all" />
                                     )}

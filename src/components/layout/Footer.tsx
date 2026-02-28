@@ -11,15 +11,15 @@ export default function Footer() {
                     <div className="flex space-x-6">
                         <a href="https://github.com/kartikvermajs" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors">
                             <span className="sr-only">GitHub</span>
-                            <Github className="h-5 w-5" />
+                            <Github className="h-5 w-5 md:h-6 md:w-6" />
                         </a>
                         <a href="https://www.linkedin.com/in/kartik-verma-4b99012b8" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors">
                             <span className="sr-only">LinkedIn</span>
-                            <Linkedin className="h-5 w-5" />
+                            <Linkedin className="h-5 w-5 md:h-6 md:w-6" />
                         </a>
                         <a href="mailto:kartikverma88273@outlook.com" className="text-muted hover:text-accent transition-colors">
                             <span className="sr-only">Email</span>
-                            <Mail className="h-5 w-5" />
+                            <Mail className="h-5 w-5 md:h-6 md:w-6" />
                         </a>
                     </div>
                 </div>

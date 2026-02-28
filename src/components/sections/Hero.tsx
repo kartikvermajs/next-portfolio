@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ArrowRight, Download, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Hero() {
     const containerRef = useRef<HTMLElement>(null);
@@ -59,27 +60,23 @@ export default function Hero() {
                         </p>
 
                         <div className="hero-element flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                            <a
-                                href="#projects"
-                                className="w-full sm:w-auto px-6 py-3 bg-foreground text-background font-medium rounded-xl hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2 group"
-                            >
-                                View Projects
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </a>
-                            <a
-                                href="#contact"
-                                className="w-full sm:w-auto px-6 py-3 bg-card border border-border text-foreground font-medium rounded-xl hover:bg-card/80 transition-colors flex items-center justify-center gap-2"
-                            >
-                                Contact Me
-                            </a>
-                            <a
-                                href="/resume.pdf"
-                                target="_blank"
-                                className="w-full sm:w-auto px-6 py-3 bg-transparent text-muted font-medium hover:text-foreground transition-colors flex items-center justify-center gap-2"
-                            >
-                                <Download className="w-4 h-4" />
-                                Resume
-                            </a>
+                            <Button asChild size="lg" className="w-full sm:w-auto rounded-xl group rounded-xl">
+                                <a href="#projects">
+                                    View Projects
+                                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                </a>
+                            </Button>
+
+                            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-xl">
+                                <a href="#contact">Contact Me</a>
+                            </Button>
+
+                            <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto rounded-xl">
+                                <a href="/resume.pdf" target="_blank">
+                                    <Download className="w-4 h-4 mr-2" />
+                                    Resume
+                                </a>
+                            </Button>
                         </div>
                     </div>
 

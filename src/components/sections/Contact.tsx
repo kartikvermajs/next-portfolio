@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Send, Loader2, CheckCircle, XCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -55,17 +56,17 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Get In Touch</h2>
+        <section id="contact" className="py-24 md:py-32">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <div className="text-center mb-16 md:mb-20">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">Get In Touch</h2>
                     <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-8" />
-                    <p className="text-lg text-muted">
+                    <p className="text-lg md:text-xl text-muted">
                         Have a question or want to work together? Leave a message below.
                     </p>
                 </div>
 
-                <div className="bg-card border border-border rounded-2xl p-6 md:p-10 shadow-sm relative overflow-hidden">
+                <div className="bg-card border border-border rounded-2xl p-6 md:p-12 shadow-sm relative overflow-hidden">
                     {/* Success Overlay */}
                     {status === "success" && (
                         <div className="absolute inset-0 bg-card/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center animate-in fade-in duration-300">
@@ -138,23 +139,24 @@ export default function Contact() {
                             )}
                         </div>
 
-                        <button
+                        <Button
                             type="submit"
                             disabled={status === "loading"}
-                            className="w-full px-8 py-4 bg-accent text-white font-medium rounded-xl hover:bg-accent/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+                            size="lg"
+                            className="w-full rounded-xl shadow-lg shadow-accent/20 h-14 md:h-16 md:text-lg"
                         >
                             {status === "loading" ? (
                                 <>
-                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                    <Loader2 className="w-5 h-5 animate-spin mr-2" />
                                     Sending...
                                 </>
                             ) : (
                                 <>
-                                    <Send className="w-5 h-5" />
+                                    <Send className="w-5 h-5 mr-2" />
                                     Send Message
                                 </>
                             )}
-                        </button>
+                        </Button>
                     </form>
                 </div>
             </div>

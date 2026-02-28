@@ -56,12 +56,12 @@ export default function Experience() {
     ];
 
     return (
-        <section id="experience" ref={sectionRef} className="py-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Work Experience</h2>
+        <section id="experience" ref={sectionRef} className="py-24 md:py-32">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <div className="text-center mb-16 md:mb-20">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">Work Experience</h2>
                     <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-8" />
-                    <p className="text-lg text-muted">
+                    <p className="text-lg md:text-xl text-muted">
                         My professional journey so far.
                     </p>
                 </div>
@@ -74,27 +74,27 @@ export default function Experience() {
                                 <div className="w-2 h-2 bg-accent rounded-full" />
                             </div>
 
-                            <div className="bg-card border border-border rounded-2xl p-6 hover:border-accent/40 transition-colors shadow-sm">
+                            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-accent/40 transition-colors shadow-sm">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                                     <div>
-                                        <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
-                                            <Briefcase className="w-5 h-5 text-accent" />
+                                        <h3 className="text-xl md:text-2xl font-bold text-foreground flex items-center gap-2">
+                                            <Briefcase className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                                             {exp.role}
                                         </h3>
-                                        <p className="text-muted text-sm mt-1">{exp.company}</p>
+                                        <p className="text-muted text-sm md:text-base mt-1">{exp.company}</p>
                                     </div>
-                                    <span className="inline-block px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-semibold whitespace-nowrap">
+                                    <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 bg-accent/10 text-accent rounded-full text-xs md:text-sm font-semibold whitespace-nowrap">
                                         {exp.duration}
                                     </span>
                                 </div>
 
-                                <p className="text-muted leading-relaxed mb-6">
+                                <p className="text-muted leading-relaxed mb-6 md:text-lg">
                                     {exp.description}
                                 </p>
 
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2 md:gap-3">
                                     {exp.tech.map((tech, idx) => (
-                                        <span key={idx} className="text-xs font-medium px-2.5 py-1 bg-background text-muted-foreground rounded border border-border">
+                                        <span key={idx} className="text-xs md:text-sm font-medium px-2.5 py-1 md:px-3 md:py-1.5 bg-background text-muted-foreground rounded border border-border">
                                             {tech}
                                         </span>
                                     ))}
