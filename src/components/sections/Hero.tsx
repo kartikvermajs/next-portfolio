@@ -72,7 +72,7 @@ export default function Hero() {
                             </Button>
 
                             <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto rounded-xl">
-                                <a href="/resume.pdf" target="_blank">
+                                <a href="https://gvdo4wevo6.ufs.sh/f/fpiND8XZTh5fvcNqnJDD5StcrGxunI0Ka1sQZy8A4dWwkfjF" target="_blank" rel="noopener noreferrer">
                                     <Download className="w-4 h-4 mr-2" />
                                     Resume
                                 </a>
