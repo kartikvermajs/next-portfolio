@@ -37,7 +37,7 @@ export default function Navbar() {
                     {/* Logo & Theme Toggle */}
                     <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto px-4 md:px-0 pt-3 md:pt-0">
                         <a href="#home" className="text-xl font-bold tracking-tighter text-foreground group">
-                            Kartik<span className="text-accent">.</span>dev
+                            Kartik<span className="text-accent"> . </span>dev
                         </a>
                         <div className="ml-4 flex items-center">
                             <ThemeToggle />
