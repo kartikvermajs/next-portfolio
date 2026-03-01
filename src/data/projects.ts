@@ -33,7 +33,7 @@ Next.js 16 (App Router), React 19, Tailwind CSS v4, PostgreSQL, Prisma ORM, Redu
     {
         id: "social-media",
         name: "NextJS Social Media",
-        shortDescription: "A fully functional modern social platform with rich-text posts, secure authentication, and real-time interactions.",
+        shortDescription: "A fully functional modern social media platform with rich-text posts, secure authentication, and real-time interactions.",
         fullDescription: `This project is a comprehensive, production-grade Full-Stack Social Media Application. It is designed as a modern platform that includes all the core functionalities you would expect from a social network like Twitter or Threads, emphasizing a responsive user interface and real-time capabilities.
 
 Core Features:
