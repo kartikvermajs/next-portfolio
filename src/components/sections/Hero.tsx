@@ -116,7 +116,7 @@ export default function Hero() {
                 <img
                   src="/final.png"
                   alt="Kartik Verma"
-                  className="w-full h-full object-cover scale-130 translate-y-13"
+                  className="w-full h-full object-cover scale-110"
                 />
               </div>
             </div>

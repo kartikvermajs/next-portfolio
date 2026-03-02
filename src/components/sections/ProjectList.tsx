@@ -25,7 +25,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
       document.body.style.overflow = "auto";
     };
   }, [selectedProject]);
-  
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".project-card-wrapper", {
@@ -61,18 +61,17 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
         {repos.map((project) => (
           <div
             key={project.id}
-            className="project-card-wrapper [perspective:1000px] h-[450px] cursor-pointer"
+            className="project-card-wrapper [perspective:1000px] [-webkit-perspective:1000px] h-[450px] cursor-pointer"
             onClick={(e) => handleCardClick(project.id, e)}
           >
             <div
-              className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
-                flippedId === project.id ? "[transform:rotateY(180deg)]" : ""
-              }`}
+              className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] [-webkit-transform-style:preserve-3d] ${flippedId === project.id ? "[transform:rotateY(180deg)] [-webkit-transform:rotateY(180deg)]" : ""
+                }`}
             >
               {/* Front Face */}
               <div
                 className={`absolute inset-0 w-full h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm flex flex-col group
-  [backface-visibility:hidden]
+  [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
   ${flippedId === project.id ? "pointer-events-none" : "pointer-events-auto"}`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -123,7 +122,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
               {/* Back Face */}
               <div
                 className={`absolute inset-0 w-full h-full bg-card border border-accent/40 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-center items-center p-8
-  [transform:rotateY(180deg)] [backface-visibility:hidden]
+  [transform:rotateY(180deg)] [-webkit-transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
   ${flippedId === project.id ? "pointer-events-auto" : "pointer-events-none"}`}
               >
                 <h3 className="text-2xl font-bold mb-8 text-foreground text-center">
