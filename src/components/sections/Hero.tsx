@@ -109,14 +109,14 @@ export default function Hero() {
             ref={imageRef}
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px]">
+            <div className="relative w-68 h-68 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px]">
               <div className="absolute inset-0 bg-accent/20 blur-3xl animate-pulse" />
 
               <div className="liquid-blob w-full h-full bg-card border border-border overflow-hidden relative shadow-2xl flex items-center justify-center">
                 <img
-                  src="https://res.cloudinary.com/dbnvbi1th/image/upload/v1772271367/IMG_9707_jab6rh.jpg"
+                  src="/IMG_9728.jpeg"
                   alt="Kartik Verma"
-                  className="w-full h-full object-cover scale-150"
+                  className="w-full h-full object-cover object-[center_10%]"
                 />
               </div>
             </div>
