@@ -114,9 +114,9 @@ export default function Hero() {
 
               <div className="liquid-blob w-full h-full bg-card border border-border overflow-hidden relative shadow-2xl flex items-center justify-center">
                 <img
-                  src="/IMG_9728.jpeg"
+                  src="/final.png"
                   alt="Kartik Verma"
-                  className="w-full h-full object-cover object-[center_10%]"
+                  className="w-full h-full object-cover scale-130 translate-y-13"
                 />
               </div>
             </div>
