@@ -17,7 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Kartik Verma | Full Stack Developer",
-  description: "Personal portfolio of Kartik Verma, a Full Stack Developer specializing in Next.js, TypeScript, and modern web development.",
+  description:
+    "Personal portfolio of Kartik Verma, a Full Stack Developer specializing in Next.js, TypeScript, and modern web development.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -37,9 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex-1 w-full relative">
-            {children}
-          </main>
+          <main className="flex-1 w-full relative">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

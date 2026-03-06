@@ -13,6 +13,16 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
   const listRef = useRef<HTMLDivElement>(null);
   const [flippedId, setFlippedId] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [showFade, setShowFade] = useState(true);
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const isBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+    setShowFade(!isBottom);
+  };
 
   useEffect(() => {
     if (selectedProject) {
@@ -195,9 +205,8 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                 src={selectedProject.image}
                 alt={selectedProject.name}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-background/90 to-transparent" />
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 p-2 bg-background/50 hover:bg-background/80 text-foreground rounded-full backdrop-blur-md transition-colors"
@@ -205,58 +214,65 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
               >
                 <X className="w-5 h-5" />
               </button>
-              <div className="absolute bottom-6 left-6 right-6">
-                <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-                  {selectedProject.name}
-                </h2>
-              </div>
             </div>
 
-            <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto custom-scrollbar">
-              <div className="flex flex-wrap gap-2 mb-6">
-                {selectedProject.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs font-semibold px-3 py-1 bg-accent/10 border border-accent/20 text-accent rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="prose prose-sm sm:prose-base dark:prose-invert max-w-none">
-                {selectedProject.fullDescription
-                  .split("\n\n")
-                  .map((paragraph, idx) => (
-                    <p
-                      key={idx}
-                      className="whitespace-pre-line text-muted-foreground leading-relaxed"
+            <div className="relative">
+              <div
+                ref={scrollRef}
+                onScroll={handleScroll}
+                className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto custom-scrollbar"
+              >
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                  {selectedProject.name}
+                </h2>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedProject.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs font-semibold px-3 py-1 bg-accent/10 border border-accent/20 text-accent rounded-full"
                     >
-                      {paragraph}
-                    </p>
+                      {tech}
+                    </span>
                   ))}
-              </div>
+                </div>
 
-              <div className="flex gap-4 mt-8 pt-6 border-t border-border">
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-2.5 bg-secondary text-foreground rounded-lg hover:bg-secondary/80 transition-colors font-medium text-sm border border-border"
-                >
-                  <Github className="w-4 h-4" />
-                  GitHub
-                </a>
-                <a
-                  href={selectedProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-2.5 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Live App
-                </a>
+                <div className="prose prose-sm sm:prose-base dark:prose-invert max-w-none">
+                  {selectedProject.fullDescription
+                    .split("\n\n")
+                    .map((paragraph, idx) => (
+                      <p
+                        key={idx}
+                        className="whitespace-pre-line text-muted-foreground leading-relaxed"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                </div>
+
+                <div className="flex justify-center gap-4 mt-8 pt-6 border-t border-border">
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-secondary text-foreground rounded-lg hover:bg-secondary/80 transition-colors font-medium text-sm border border-border"
+                  >
+                    <Github className="w-4 h-4" />
+                    GitHub
+                  </a>
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Live App
+                  </a>
+                </div>
               </div>
+              {showFade && (
+                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-background to-transparent" />
+              )}
             </div>
           </div>
         </div>
