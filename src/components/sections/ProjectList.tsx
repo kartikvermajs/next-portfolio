@@ -65,16 +65,19 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
             onClick={(e) => handleCardClick(project.id, e)}
           >
             <div
-              className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] [-webkit-transform-style:preserve-3d] ${flippedId === project.id ? "[transform:rotateY(180deg)] [-webkit-transform:rotateY(180deg)]" : ""
-                }`}
+              className={`relative w-full h-full transform-gpu transition-transform duration-700 [transform-style:preserve-3d] [-webkit-transform-style:preserve-3d] ${
+                flippedId === project.id
+                  ? "[transform:rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)]"
+                  : ""
+              }`}
             >
               {/* Front Face */}
               <div
                 className={`absolute inset-0 w-full h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm flex flex-col group
-  [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
+  backface-hidden [-webkit-backface-visibility:hidden] transform-[translateZ(0)] [-webkit-transform:translateZ(0)]
   ${flippedId === project.id ? "pointer-events-none" : "pointer-events-auto"}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative w-full h-48 sm:h-52 md:h-56 overflow-hidden bg-muted">
                   <Image
@@ -85,7 +88,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                   />
                 </div>
 
-                <div className="p-4 pt-4 flex flex-col flex-grow z-10">
+                <div className="p-4 pt-4 flex flex-col grow z-10">
                   <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-accent transition-colors">
                     {project.name}
                   </h3>
@@ -122,14 +125,14 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
               {/* Back Face */}
               <div
                 className={`absolute inset-0 w-full h-full bg-card border border-accent/40 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-center items-center p-8
-  [transform:rotateY(180deg)] [-webkit-transform:rotateY(180deg)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
+  transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)] backface-hidden [-webkit-backface-visibility:hidden]
   ${flippedId === project.id ? "pointer-events-auto" : "pointer-events-none"}`}
               >
                 <h3 className="text-2xl font-bold mb-8 text-foreground text-center">
                   {project.name}
                 </h3>
 
-                <div className="flex flex-col gap-4 w-full max-w-[200px]">
+                <div className="flex flex-col gap-4 w-full max-w-50">
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -166,9 +169,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                 <button
                   onClick={(e) => handleCardClick(project.id, e)}
                   className="absolute bottom-6 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Flip back
-                </button>
+                ></button>
               </div>
             </div>
           </div>
@@ -196,7 +197,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-background/90 to-transparent" />
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 p-2 bg-background/50 hover:bg-background/80 text-foreground rounded-full backdrop-blur-md transition-colors"
