@@ -71,13 +71,13 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
         {repos.map((project) => (
           <div
             key={project.id}
-            className="project-card-wrapper [perspective:1000px] [-webkit-perspective:1000px] h-[450px] cursor-pointer"
+            className="project-card-wrapper perspective-[1000px] [-webkit-perspective:1000px] h-112.5 cursor-pointer"
             onClick={(e) => handleCardClick(project.id, e)}
           >
             <div
-              className={`relative w-full h-full transform-gpu transition-transform duration-700 [transform-style:preserve-3d] [-webkit-transform-style:preserve-3d] ${
+              className={`relative w-full h-full transform-gpu transition-transform duration-700 transform-3d [-webkit-transform-style:preserve-3d] ${
                 flippedId === project.id
-                  ? "[transform:rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)]"
+                  ? "transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)]"
                   : ""
               }`}
             >
@@ -103,14 +103,14 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                     {project.name}
                   </h3>
 
-                  <p className="text-muted text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                  <p className="text-muted text-sm leading-relaxed mb-6 grow line-clamp-3">
                     {project.shortDescription}
                   </p>
 
                   <div className="relative overflow-hidden mt-auto">
                     {/* Fade Edges */}
-                    <div className="pointer-events-none absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-card to-transparent z-10" />
-                    <div className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-card to-transparent z-10" />
+                    <div className="pointer-events-none absolute left-0 top-0 h-full w-10 bg-linear-to-r from-card to-transparent z-10" />
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-linear-to-l from-card to-transparent z-10" />
 
                     {/* Infinite Track */}
                     <div className="flex gap-2 w-max animate-marquee">
@@ -266,7 +266,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                     className="flex items-center gap-2 px-6 py-2.5 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium text-sm"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Live App
+                    Live
                   </a>
                 </div>
               </div>
