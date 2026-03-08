@@ -12,7 +12,6 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Fade in and move up the texts
       gsap.from(".hero-element", {
         y: 30,
         opacity: 0,
@@ -22,7 +21,6 @@ export default function Hero() {
         delay: 0.2,
       });
 
-      // Fade in image
       gsap.from(imageRef.current, {
         opacity: 0,
         scale: 0.95,
@@ -43,7 +41,6 @@ export default function Hero() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          {/* Text Content */}
           <div
             ref={textRef}
             className="flex flex-col space-y-6 text-center lg:text-left order-2 lg:order-1"
@@ -88,7 +85,7 @@ export default function Hero() {
 
               <Button
                 asChild
-                variant="ghost"
+                variant="outline"
                 size="lg"
                 className="w-full sm:w-auto rounded-xl"
               >
@@ -104,7 +101,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image Content */}
           <div
             ref={imageRef}
             className="order-1 lg:order-2 flex justify-center lg:justify-end"

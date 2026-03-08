@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { StarsBackground } from "@/components/ui/StarsBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <StarsBackground />
           <Navbar />
           <main className="flex-1 w-full relative">{children}</main>
           <Footer />

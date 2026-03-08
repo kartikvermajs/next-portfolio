@@ -55,7 +55,6 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
   }, [repos]);
 
   const handleCardClick = (id: string, e: React.MouseEvent) => {
-    // Prevent flipping when clicking buttons or links
     const target = e.target as HTMLElement;
     if (target.closest("button") || target.closest("a")) return;
 
@@ -75,13 +74,11 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
             onClick={(e) => handleCardClick(project.id, e)}
           >
             <div
-              className={`relative w-full h-full transform-gpu transition-transform duration-700 transform-3d [-webkit-transform-style:preserve-3d] ${
-                flippedId === project.id
+              className={`relative w-full h-full transform-gpu transition-transform duration-700 transform-3d [-webkit-transform-style:preserve-3d] ${flippedId === project.id
                   ? "transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)]"
                   : ""
-              }`}
+                }`}
             >
-              {/* Front Face */}
               <div
                 className={`absolute inset-0 w-full h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm flex flex-col group
   backface-hidden [-webkit-backface-visibility:hidden] transform-[translateZ(0)] [-webkit-transform:translateZ(0)]
@@ -108,11 +105,9 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                   </p>
 
                   <div className="relative overflow-hidden mt-auto">
-                    {/* Fade Edges */}
                     <div className="pointer-events-none absolute left-0 top-0 h-full w-10 bg-linear-to-r from-card to-transparent z-10" />
                     <div className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-linear-to-l from-card to-transparent z-10" />
 
-                    {/* Infinite Track */}
                     <div className="flex gap-2 w-max animate-marquee">
                       {[...project.techStack, ...project.techStack].map(
                         (tech, i) => (
@@ -132,7 +127,6 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                 </div>
               </div>
 
-              {/* Back Face */}
               <div
                 className={`absolute inset-0 w-full h-full bg-card border border-accent/40 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-center items-center p-8
   transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)] backface-hidden [-webkit-backface-visibility:hidden]
@@ -167,7 +161,6 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedProject(project);
-                      // Reset flip if desired, or keep it flipped
                     }}
                     className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-transparent border-2 border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-colors font-medium mt-2"
                   >
@@ -186,16 +179,13 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
         ))}
       </div>
 
-      {/* Popup Modal */}
       {selectedProject && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
           onClick={() => setSelectedProject(null)}
         >
-          {/* Dimmed Background */}
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" />
 
-          {/* Modal Content */}
           <div
             className="relative w-full max-w-3xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}

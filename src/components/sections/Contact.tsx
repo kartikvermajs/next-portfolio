@@ -67,7 +67,6 @@ export default function Contact() {
                 </div>
 
                 <div className="bg-card border border-border rounded-2xl p-6 md:p-12 shadow-sm relative overflow-hidden">
-                    {/* Success Overlay */}
                     {status === "success" && (
                         <div className="absolute inset-0 bg-card/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center animate-in fade-in duration-300">
                             <CheckCircle className="w-16 h-16 text-green-500 mb-4" />

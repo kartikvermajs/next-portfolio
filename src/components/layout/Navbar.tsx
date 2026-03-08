@@ -34,7 +34,6 @@ export default function Navbar() {
         >
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                    {/* Logo & Theme Toggle */}
                     <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto px-4 md:px-0 pt-3 md:pt-0">
                         <a href="#home" className="text-xl font-bold tracking-tighter text-foreground group">
                             Kartik<span className="text-accent"> . </span>dev
@@ -43,7 +42,6 @@ export default function Navbar() {
                             <ThemeToggle />
                         </div>
                     </div>
-                    {/* Navigation Links */}
                     <div className="hidden md:flex md:w-auto justify-end md:gap-8 items-center h-full">
                         {navItems.map((item) => {
                             const Icon = item.icon;

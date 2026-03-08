@@ -76,7 +76,6 @@ export default function Experience() {
   return (
     <section id="experience" ref={sectionRef} className="py-24 md:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">
             Experience & Learning Journey
@@ -88,18 +87,14 @@ export default function Experience() {
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative border-l-2 border-border ml-3 md:ml-6">
           {experiences.map((exp) => (
             <div key={exp.id} className="timeline-item mb-12 ml-8 relative">
-              {/* Dot */}
               <div className="absolute -left-[44px] top-0 w-6 h-6 bg-background border-2 border-accent rounded-full flex items-center justify-center shadow-[0_0_12px_rgba(129,140,248,0.3)]">
                 <div className="w-2 h-2 bg-accent rounded-full" />
               </div>
 
-              {/* Card */}
               <div className="bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-accent/40 transition-all shadow-sm hover:shadow-lg">
-                {/* Title */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                   <div className="flex items-center gap-2">
                     {exp.icon}
@@ -113,12 +108,10 @@ export default function Experience() {
                   </span>
                 </div>
 
-                {/* Description */}
                 <p className="text-muted mb-4 leading-relaxed text-sm md:text-base">
                   {exp.description}
                 </p>
 
-                {/* Highlights */}
                 <ul className="space-y-2 mb-5">
                   {exp.highlights.map((point, idx) => (
                     <li
@@ -131,7 +124,6 @@ export default function Experience() {
                   ))}
                 </ul>
 
-                {/* Tech */}
                 <div className="flex flex-wrap gap-2">
                   {exp.tech.map((tech, idx) => (
                     <span
