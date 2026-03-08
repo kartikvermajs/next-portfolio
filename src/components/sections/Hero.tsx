@@ -37,7 +37,7 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="min-h-[100dvh] flex flex-col justify-center items-center py-20 overflow-hidden"
+      className="min-h-dvh flex flex-col justify-center items-center py-20 overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -66,7 +66,7 @@ export default function Hero() {
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto rounded-xl group rounded-xl"
+                className="w-full sm:w-auto rounded-xl group"
               >
                 <a href="#projects">
                   View Projects
@@ -105,10 +105,10 @@ export default function Hero() {
             ref={imageRef}
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
-            <div className="relative w-68 h-68 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px]">
+            <div className="relative w-68 h-68 sm:w-80 sm:h-80 lg:w-125 lg:h-125">
               <div className="absolute inset-0 bg-accent/20 blur-3xl animate-pulse" />
 
-              <div className="liquid-blob w-full h-full bg-card border border-border overflow-hidden relative shadow-2xl flex items-center justify-center">
+              <div className="rounded-full w-full h-full bg-card border border-border overflow-hidden relative shadow-2xl flex items-center justify-center">
                 <img
                   src="/final.png"
                   alt="Kartik Verma"
