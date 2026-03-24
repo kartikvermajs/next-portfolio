@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -62,7 +62,7 @@ export default function Hero() {
               on seamless user experiences and modern engineering practices.
             </p>
 
-            <div className="hero-element flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <div className="hero-element flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
               <Button
                 asChild
                 size="lg"
@@ -96,6 +96,22 @@ export default function Hero() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Resume
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto rounded-xl border-[#0A66C2]/30 bg-[#0A66C2]/5 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white dark:border-[#70B5F9]/30 dark:bg-[#70B5F9]/10 dark:text-[#70B5F9] dark:hover:bg-[#70B5F9] dark:hover:text-[#0f172a] transition-all group"
+              >
+                <a
+                  href="https://www.linkedin.com/in/kartik-verma-4b99012b8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  Follow me on LinkedIn
                 </a>
               </Button>
             </div>
