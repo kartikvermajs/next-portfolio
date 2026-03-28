@@ -41,7 +41,7 @@ export default function Hero() {
       className="relative min-h-dvh flex flex-col justify-center items-center py-20 overflow-hidden"
     >
 
-      <div className="absolute top-5 right-5 z-50 md:hidden">
+      <div className="absolute top-3 right-3 z-50 md:hidden">
         <ThemeToggle />
       </div>
 

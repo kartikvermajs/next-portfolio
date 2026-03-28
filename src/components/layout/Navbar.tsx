@@ -121,33 +121,38 @@ export default function Navbar() {
                 </div>
 
                 {/* MOBILE */}
-                <div className="flex md:hidden h-16 items-center justify-between px-2">
-                    {navItems.map((item) => {
-                        const Icon = item.icon;
-                        const isActive =
-                            activeSection === item.href.slice(1);
+                {/* MOBILE */}
+                <div className="md:hidden px-3 pb-3">
+                    <div className="flex h-16 items-center justify-between px-3 rounded-2xl 
+    bg-card/70 backdrop-blur-xl 
+    shadow-[0_8px_30px_rgba(0,0,0,0.15)] 
+    border border-border/30">
 
-                        return (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                onClick={() =>
-                                    setActiveSection(item.href.slice(1))
-                                }
-                                className={cn(
-                                    "flex flex-col items-center justify-center text-[10px] px-2 py-1 rounded-xl transition-all",
+                        {navItems.map((item) => {
+                            const Icon = item.icon;
+                            const isActive =
+                                activeSection === item.href.slice(1);
 
-
-                                    isActive
-                                        ? "text-accent shadow-extruded-small"
-                                        : "text-muted"
-                                )}
-                            >
-                                <Icon className="h-5 w-5 mb-0.5" />
-                                {item.name}
-                            </a>
-                        );
-                    })}
+                            return (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() =>
+                                        setActiveSection(item.href.slice(1))
+                                    }
+                                    className={cn(
+                                        "flex flex-col items-center justify-center text-[10px] px-2 py-1 rounded-xl transition-all",
+                                        isActive
+                                            ? "text-accent shadow-extruded-small"
+                                            : "text-muted"
+                                    )}
+                                >
+                                    <Icon className="h-5 w-5 mb-0.5" />
+                                    {item.name}
+                                </a>
+                            );
+                        })}
+                    </div>
                 </div>
             </nav>
         </header>
