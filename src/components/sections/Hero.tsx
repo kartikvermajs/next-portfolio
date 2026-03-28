@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ArrowRight, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -37,8 +38,13 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="min-h-dvh flex flex-col justify-center items-center py-20 overflow-hidden"
+      className="relative min-h-dvh flex flex-col justify-center items-center py-20 overflow-hidden"
     >
+
+      <div className="absolute top-5 right-5 z-50 md:hidden">
+        <ThemeToggle />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div
@@ -63,32 +69,18 @@ export default function Hero() {
             </p>
 
             <div className="hero-element flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-              <Button
-                asChild
-                size="lg"
-                className="w-full sm:w-auto rounded-xl group"
-              >
+              <Button asChild size="lg" className="w-full sm:w-auto rounded-xl group">
                 <a href="#projects">
                   View Projects
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
 
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto rounded-xl"
-              >
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-xl">
                 <a href="#contact">Contact Me</a>
               </Button>
 
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto rounded-xl"
-              >
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-xl">
                 <a
                   href="https://gvdo4wevo6.ufs.sh/f/fpiND8XZTh5fvcNqnJDD5StcrGxunI0Ka1sQZy8A4dWwkfjF"
                   target="_blank"
@@ -122,7 +114,6 @@ export default function Hero() {
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative w-68 h-68 sm:w-80 sm:h-80 lg:w-125 lg:h-125">
-              {/* Nested Neumorphism Depth */}
               <div className="rounded-full w-full h-full bg-card shadow-extruded flex items-center justify-center p-1 sm:p-2">
                 <div className="rounded-full w-full h-full shadow-inset-deep overflow-hidden relative">
                   <img
