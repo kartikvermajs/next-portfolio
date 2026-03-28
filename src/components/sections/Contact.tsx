@@ -66,9 +66,9 @@ export default function Contact() {
                     </p>
                 </div>
 
-                <div className="bg-card border border-border rounded-2xl p-6 md:p-12 shadow-sm relative overflow-hidden">
+                <div className="bg-card shadow-extruded border-none rounded-[32px] p-6 md:p-12 relative overflow-hidden">
                     {status === "success" && (
-                        <div className="absolute inset-0 bg-card/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center animate-in fade-in duration-300">
+                        <div className="absolute inset-0 bg-card/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center animate-in fade-in duration-300 rounded-[32px]">
                             <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
                             <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
                             <p className="text-muted text-center max-w-sm">
@@ -94,7 +94,7 @@ export default function Contact() {
                                     id="name"
                                     type="text"
                                     placeholder="John Doe"
-                                    className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                    className="w-full px-5 py-4 bg-card shadow-inset border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background focus:shadow-inset-deep transition-all duration-300 placeholder:text-muted-foreground/50"
                                     {...register("name")}
                                     disabled={status === "loading"}
                                 />
@@ -111,7 +111,7 @@ export default function Contact() {
                                     id="email"
                                     type="email"
                                     placeholder="john@example.com"
-                                    className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all placeholder:text-muted-foreground/50"
+                                    className="w-full px-5 py-4 bg-card shadow-inset border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background focus:shadow-inset-deep transition-all duration-300 placeholder:text-muted-foreground/50"
                                     {...register("email")}
                                     disabled={status === "loading"}
                                 />
@@ -129,7 +129,7 @@ export default function Contact() {
                                 id="message"
                                 rows={5}
                                 placeholder="How can I help you?"
-                                className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all placeholder:text-muted-foreground/50 resize-y"
+                                className="w-full px-5 py-4 bg-card shadow-inset border-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background focus:shadow-inset-deep transition-all duration-300 placeholder:text-muted-foreground/50 resize-opacity"
                                 {...register("message")}
                                 disabled={status === "loading"}
                             />
@@ -142,7 +142,7 @@ export default function Contact() {
                             type="submit"
                             disabled={status === "loading"}
                             size="lg"
-                            className="w-full rounded-xl shadow-lg shadow-accent/20 h-14 md:h-16 md:text-lg"
+                            className="w-full rounded-2xl h-14 md:h-16 md:text-lg"
                         >
                             {status === "loading" ? (
                                 <>

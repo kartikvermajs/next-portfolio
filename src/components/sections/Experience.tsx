@@ -12,17 +12,25 @@ export default function Experience() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".timeline-item", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
+      gsap.fromTo(".timeline-item",
+        {
+          x: -40,
+          opacity: 0,
         },
-        x: -40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.25,
-        ease: "power3.out",
-      });
+        {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.25,
+          ease: "power3.out",
+          clearProps: "all"
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -87,14 +95,15 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="relative border-l-2 border-border ml-3 md:ml-6">
+        <div className="relative ml-2 md:ml-6">
+          <div className="absolute left-[11px] top-6 bottom-4 w-[2px] bg-border/40" />
           {experiences.map((exp) => (
-            <div key={exp.id} className="timeline-item mb-12 ml-8 relative">
-              <div className="absolute -left-[44px] top-0 w-6 h-6 bg-background border-2 border-accent rounded-full flex items-center justify-center shadow-[0_0_12px_rgba(129,140,248,0.3)]">
+            <div key={exp.id} className="timeline-item mb-12 pl-12 relative flex flex-col items-start">
+              <div className="absolute left-0 top-[40px] w-6 h-6 bg-card border-none rounded-full flex items-center justify-center shadow-extruded-small ring-2 ring-accent ring-offset-2 ring-offset-background z-10">
                 <div className="w-2 h-2 bg-accent rounded-full" />
               </div>
 
-              <div className="bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-accent/40 transition-all shadow-sm hover:shadow-lg">
+              <div className="bg-card w-full border-none shadow-extruded rounded-[32px] p-6 md:p-8 hover:-translate-y-1 hover:shadow-extruded-hover transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                   <div className="flex items-center gap-2">
                     {exp.icon}
@@ -128,7 +137,7 @@ export default function Experience() {
                   {exp.tech.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="text-xs md:text-sm px-2.5 py-1 bg-background border border-border rounded-md text-muted-foreground"
+                      className="text-xs md:text-sm px-3 py-1.5 bg-card shadow-extruded-small border-none rounded-lg text-muted-foreground"
                     >
                       {tech}
                     </span>

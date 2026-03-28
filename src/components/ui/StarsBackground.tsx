@@ -45,8 +45,8 @@ export function StarsBackground() {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 1.5 + 0.5,
-                opacity: Math.random(),
-                speed: (Math.random() * 0.02 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
+                opacity: Math.random() * 0.5, // Reduced max opacity for neumorphic subtlety
+                speed: (Math.random() * 0.01 + 0.002) * (Math.random() > 0.5 ? 1 : -1),
             });
         }
 
@@ -62,11 +62,12 @@ export function StarsBackground() {
 
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
+            // Soft Neumorphic Star Color
+            ctx.fillStyle = "#818cf8"; // Using accent color for a nice matching hue
 
             stars.forEach((star) => {
                 star.opacity += star.speed;
-                if (star.opacity > 1 || star.opacity < 0) {
+                if (star.opacity > 0.6 || star.opacity < 0.1) {
                     star.speed *= -1;
                 }
 
@@ -76,13 +77,13 @@ export function StarsBackground() {
                 ctx.fill();
             });
 
-            if (Math.random() < 0.005) {
+            if (Math.random() < 0.003) { // Slightly less frequent shooting stars
                 shootingStars.push({
                     x: Math.random() * canvas.width,
                     y: 0,
-                    length: Math.random() * 80 + 20,
-                    speed: Math.random() * 10 + 5,
-                    opacity: 1,
+                    length: Math.random() * 60 + 20, // slightly shorter
+                    speed: Math.random() * 8 + 4,
+                    opacity: 0.6, // lower peak opacity
                     active: true,
                     angle: Math.PI / 4,
                 });
@@ -101,12 +102,13 @@ export function StarsBackground() {
                 const tailY = star.y - Math.sin(star.angle) * star.length;
 
                 const gradient = ctx.createLinearGradient(headX, headY, tailX, tailY);
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${Math.max(0, star.opacity)})`);
-                gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+                // Subtle cool tail using Accent Light rgb approximation
+                gradient.addColorStop(0, `rgba(139, 132, 255, ${Math.max(0, star.opacity)})`);
+                gradient.addColorStop(1, `rgba(139, 132, 255, 0)`);
 
                 ctx.globalAlpha = 1;
                 ctx.strokeStyle = gradient;
-                ctx.lineWidth = 1.5;
+                ctx.lineWidth = 1.2;
 
                 ctx.beginPath();
                 ctx.moveTo(headX, headY);
@@ -115,7 +117,7 @@ export function StarsBackground() {
 
                 star.x += Math.cos(star.angle) * star.speed;
                 star.y += Math.sin(star.angle) * star.speed;
-                star.opacity -= 0.015;
+                star.opacity -= 0.012;
 
                 if (
                     star.opacity <= 0 ||
@@ -143,7 +145,8 @@ export function StarsBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 z-[-1] pointer-events-none mix-blend-screen"
+            // Add slight opacity to the whole canvas to blend better with dark theme
+            className="fixed inset-0 z-[-1] pointer-events-none opacity-60 mix-blend-screen"
             aria-hidden="true"
         />
     );

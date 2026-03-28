@@ -38,17 +38,25 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".project-card-wrapper", {
-        scrollTrigger: {
-          trigger: listRef.current,
-          start: "top 80%",
+      gsap.fromTo(".project-card-wrapper",
+        {
+          y: 50,
+          opacity: 0,
         },
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-      });
+        {
+          scrollTrigger: {
+            trigger: listRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          clearProps: "all"
+        }
+      );
     }, listRef);
 
     return () => ctx.revert();
@@ -75,12 +83,12 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
           >
             <div
               className={`relative w-full h-full transform-gpu transition-transform duration-700 transform-3d [-webkit-transform-style:preserve-3d] ${flippedId === project.id
-                  ? "transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)]"
-                  : ""
+                ? "transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)]"
+                : ""
                 }`}
             >
               <div
-                className={`absolute inset-0 w-full h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm flex flex-col group
+                className={`absolute inset-0 w-full h-full bg-card shadow-extruded border-none rounded-[32px] overflow-hidden flex flex-col group
   backface-hidden [-webkit-backface-visibility:hidden] transform-[translateZ(0)] [-webkit-transform:translateZ(0)]
   ${flippedId === project.id ? "pointer-events-none" : "pointer-events-auto"}`}
               >
@@ -113,7 +121,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                         (tech, i) => (
                           <span
                             key={i}
-                            className="whitespace-nowrap text-xs font-medium px-2.5 py-1 bg-border/50 text-muted-foreground rounded-md"
+                            className="whitespace-nowrap text-xs font-medium px-3 py-1.5 bg-card shadow-inset-small text-muted-foreground rounded-lg"
                           >
                             {tech}
                           </span>
@@ -128,7 +136,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
               </div>
 
               <div
-                className={`absolute inset-0 w-full h-full bg-card border border-accent/40 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-center items-center p-8
+                className={`absolute inset-0 w-full h-full bg-card border-none shadow-extruded-hover rounded-[32px] overflow-hidden flex flex-col justify-center items-center p-8
   transform-[rotateY(180deg)_translateZ(0)] [-webkit-transform:rotateY(180deg)_translateZ(0)] backface-hidden [-webkit-backface-visibility:hidden]
   ${flippedId === project.id ? "pointer-events-auto" : "pointer-events-none"}`}
               >
@@ -141,7 +149,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-secondary text-foreground rounded-lg hover:text-accent hover:border-accent hover:bg-secondary/80 transition-colors font-medium border border-border"
+                    className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-card text-foreground shadow-extruded-small rounded-2xl hover:shadow-extruded hover:-translate-y-0.5 active:translate-y-px active:shadow-inset-small transition-all duration-300 font-medium border-none"
                   >
                     <Github className="w-5 h-5" />
                     Visit GitHub
@@ -151,7 +159,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors font-medium"
+                    className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-accent text-white shadow-extruded-small rounded-2xl hover:shadow-extruded hover:-translate-y-0.5 active:translate-y-px active:shadow-inset-small transition-all duration-300 font-medium"
                   >
                     <ExternalLink className="w-5 h-5" />
                     Visit Live App
@@ -162,7 +170,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                       e.stopPropagation();
                       setSelectedProject(project);
                     }}
-                    className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-transparent border-2 border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-colors font-medium mt-2"
+                    className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-card shadow-extruded-small text-accent rounded-2xl hover:shadow-extruded hover:-translate-y-0.5 active:translate-y-px active:shadow-inset-small transition-all duration-300 font-medium mt-2"
                   >
                     <Info className="w-5 h-5" />
                     About Project
@@ -187,7 +195,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" />
 
           <div
-            className="relative w-full max-w-3xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+            className="relative w-full max-w-3xl bg-card border-none shadow-extruded rounded-[32px] overflow-hidden animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-48 sm:h-64 w-full bg-muted">
@@ -219,7 +227,7 @@ export default function ProjectList({ repos }: { repos: Project[] }) {
                   {selectedProject.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs font-semibold px-3 py-1 bg-accent/10 border border-accent/20 text-accent rounded-full"
+                      className="text-xs font-semibold px-4 py-1.5 bg-card shadow-inset-small border-none text-accent rounded-xl"
                     >
                       {tech}
                     </span>

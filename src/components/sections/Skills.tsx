@@ -11,29 +11,45 @@ export default function Skills() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(".skill-category", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
+            gsap.fromTo(".skill-category",
+                {
+                    y: 30,
+                    opacity: 0,
                 },
-                y: 30,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.2,
-                ease: "power2.out",
-            });
+                {
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse",
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.2,
+                    ease: "power2.out",
+                    clearProps: "all"
+                }
+            );
 
-            gsap.from(".skill-badge", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 70%",
+            gsap.fromTo(".skill-badge",
+                {
+                    scale: 0.8,
+                    opacity: 0,
                 },
-                scale: 0.8,
-                opacity: 0,
-                duration: 0.4,
-                stagger: 0.05,
-                ease: "back.out(1.5)",
-            });
+                {
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 70%",
+                        toggleActions: "play none none reverse",
+                    },
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.4,
+                    stagger: 0.05,
+                    ease: "back.out(1.5)",
+                    clearProps: "all" /* removes inline styles post animation, restoring transition-all safely */
+                }
+            );
         }, sectionRef);
 
         return () => ctx.revert();
@@ -55,7 +71,7 @@ export default function Skills() {
     ];
 
     return (
-        <section id="skills" ref={sectionRef} className="py-24 md:py-32 bg-card/30">
+        <section id="skills" ref={sectionRef} className="py-24 md:py-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">Technical Arsenal</h2>
@@ -67,16 +83,15 @@ export default function Skills() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     {skillCategories.map((category, idx) => (
-                        <div key={idx} className="skill-category bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+                        <div key={idx} className="skill-category bg-card shadow-extruded rounded-[32px] p-6 md:p-8">
                             <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-8 text-foreground">{category.title}</h3>
                             <div className="flex flex-wrap gap-2 md:gap-3">
                                 {category.skills.map((skill, sIdx) => (
-                                    <span
-                                        key={sIdx}
-                                        className="skill-badge px-3 py-1.5 md:px-4 md:py-2 bg-background border border-border text-sm md:text-base font-medium text-muted-foreground rounded-lg hover:border-accent hover:text-accent transition-colors select-none"
-                                    >
-                                        {skill}
-                                    </span>
+                                    <div key={sIdx} className="skill-badge inline-block">
+                                        <span className="block px-4 py-2 bg-card shadow-extruded-small text-sm md:text-base font-medium text-muted-foreground rounded-xl hover:shadow-inset-small hover:text-accent hover:-translate-y-[0.5px] transition-all duration-300 select-none cursor-default">
+                                            {skill}
+                                        </span>
+                                    </div>
                                 ))}
                             </div>
                         </div>

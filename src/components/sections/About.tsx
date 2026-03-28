@@ -12,17 +12,25 @@ export default function About() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(".about-item", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
+            gsap.fromTo(".about-item",
+                {
+                    y: 40,
+                    opacity: 0,
                 },
-                y: 40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power3.out",
-            });
+                {
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse",
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    clearProps: "all"
+                }
+            );
         }, sectionRef);
 
         return () => ctx.revert();
@@ -47,7 +55,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" ref={sectionRef} className="py-24 md:py-32 bg-card/30">
+        <section id="about" ref={sectionRef} className="py-24 md:py-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20 about-item">
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">About Me</h2>
@@ -62,17 +70,16 @@ export default function About() {
                     {philosophies.map((item, index) => {
                         const Icon = item.icon;
                         return (
-                            <div
-                                key={index}
-                                className="about-item p-6 md:p-8 bg-card border border-border rounded-2xl hover:border-accent/50 transition-colors"
-                            >
-                                <div className="w-12 h-12 md:w-16 md:h-16 bg-accent/10 rounded-xl flex items-center justify-center mb-4 md:mb-6 text-accent">
-                                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
+                            <div key={index} className="about-item">
+                                <div className="h-full p-6 md:p-8 bg-card shadow-extruded rounded-[32px] hover:-translate-y-1 hover:shadow-extruded-hover transition-all duration-300">
+                                    <div className="w-12 h-12 md:w-16 md:h-16 bg-card shadow-inset-deep rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-accent">
+                                        <Icon className="w-6 h-6 md:w-8 md:h-8" />
+                                    </div>
+                                    <h3 className="text-xl md:text-2xl font-semibold mb-2">{item.title}</h3>
+                                    <p className="text-muted leading-relaxed md:text-lg">
+                                        {item.description}
+                                    </p>
                                 </div>
-                                <h3 className="text-xl md:text-2xl font-semibold mb-2">{item.title}</h3>
-                                <p className="text-muted leading-relaxed md:text-lg">
-                                    {item.description}
-                                </p>
                             </div>
                         );
                     })}

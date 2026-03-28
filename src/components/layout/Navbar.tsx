@@ -11,8 +11,13 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            requestAnimationFrame(() => {
+                setIsScrolled(window.scrollY > 20);
+            });
         };
+
+        handleScroll();
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -29,20 +34,20 @@ export default function Navbar() {
         <header
             className={cn(
                 "fixed bottom-0 z-50 w-full md:bottom-auto md:top-0 transition-all duration-300",
-                isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm shadow-black/10" : "bg-transparent md:bg-transparent bg-background border-t border-border md:border-transparent"
+                isScrolled ? "bg-background/80 backdrop-blur-lg shadow-extruded-small border-none" : "bg-transparent md:bg-transparent bg-background border-none"
             )}
         >
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                    <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto px-4 md:px-0 pt-3 md:pt-0">
-                        <a href="#home" className="text-xl font-bold tracking-tighter text-foreground group">
+                    <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto px-2 md:px-0">
+                        <a href="#home" className="text-xl font-extrabold tracking-tighter text-foreground group">
                             Kartik<span className="text-accent"> . </span>dev
                         </a>
                         <div className="ml-4 flex items-center">
                             <ThemeToggle />
                         </div>
                     </div>
-                    <div className="hidden md:flex md:w-auto justify-end md:gap-8 items-center h-full">
+                    <div className="hidden md:flex md:w-auto justify-end md:gap-4 items-center h-full">
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const isActive = activeSection === item.href.slice(1);
@@ -52,15 +57,14 @@ export default function Navbar() {
                                     href={item.href}
                                     onClick={() => setActiveSection(item.href.slice(1))}
                                     className={cn(
-                                        "flex flex-col md:flex-row items-center justify-center p-2 text-[10px] md:text-sm font-medium transition-all hover:text-accent relative",
-                                        isActive ? "text-accent" : "text-muted"
+                                        "flex items-center justify-center px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-2xl select-none",
+                                        isActive
+                                            ? "text-accent bg-card shadow-inset-small"
+                                            : "text-muted hover:bg-card hover:text-foreground hover:shadow-extruded-small hover:-translate-y-[0.5px] active:translate-y-0 active:shadow-inset-small"
                                     )}
                                 >
-                                    <Icon className="h-5 w-5 mb-1 md:mb-0 md:mr-2 md:h-4 md:w-4 lg:h-5 lg:w-5" />
-                                    <span className="text-[10px] md:text-sm lg:text-base">{item.name}</span>
-                                    {isActive && (
-                                        <span className="absolute -top-3 md:-bottom-2 w-1 h-1 md:w-full md:h-0.5 bg-accent rounded-full transition-all" />
-                                    )}
+                                    <Icon className="h-4 w-4 mr-2" />
+                                    <span>{item.name}</span>
                                 </a>
                             );
                         })}

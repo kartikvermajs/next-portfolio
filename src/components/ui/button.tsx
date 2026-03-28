@@ -4,26 +4,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl text-sm font-bold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:-translate-y-[1px] active:translate-y-[0.5px]",
     {
         variants: {
             variant: {
                 default:
-                    "bg-foreground text-background shadow hover:bg-foreground/90",
+                    "bg-accent text-white shadow-extruded hover:shadow-extruded-hover active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.3),inset_-3px_-3px_6px_rgba(255,255,255,0.2)]",
                 destructive:
-                    "bg-red-500 text-white shadow-sm hover:bg-red-500/90",
+                    "bg-red-500 text-white shadow-extruded hover:shadow-extruded-hover active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.3),inset_-3px_-3px_6px_rgba(255,255,255,0.2)]",
                 outline:
-                    "border border-border bg-background shadow-sm hover:bg-accent hover:text-white",
+                    "bg-card text-foreground shadow-extruded-small hover:shadow-extruded active:shadow-inset-small",
                 secondary:
-                    "bg-accent text-white shadow-sm hover:bg-accent/80",
-                ghost: "hover:bg-accent/10 hover:text-accent",
-                link: "text-foreground underline-offset-4 hover:underline",
+                    "bg-card text-foreground shadow-extruded hover:shadow-extruded-hover active:shadow-inset",
+                ghost: "hover:shadow-extruded-small active:shadow-inset-small hover:bg-card hover:text-foreground text-muted hover:-translate-y-0 active:translate-y-[0.5px]",
+                link: "text-accent underline-offset-4 hover:underline hover:translate-y-0 active:translate-y-0",
             },
             size: {
-                default: "h-9 px-4 py-2 md:h-11 md:px-6 md:py-3 text-sm md:text-base",
-                sm: "h-8 rounded-md px-3 text-xs md:text-sm",
-                lg: "h-10 rounded-md px-8 md:h-14 md:px-10 text-base md:text-lg",
-                icon: "h-9 w-9 md:h-11 md:w-11",
+                default: "h-12 px-6 py-3 text-base",
+                sm: "h-10 px-4 text-sm rounded-xl",
+                lg: "h-14 px-10 text-lg",
+                icon: "h-12 w-12",
             },
         },
         defaultVariants: {

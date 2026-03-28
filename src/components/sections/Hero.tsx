@@ -45,13 +45,13 @@ export default function Hero() {
             ref={textRef}
             className="flex flex-col space-y-6 text-center lg:text-left order-2 lg:order-1"
           >
-            <div className="hero-element inline-block mx-auto lg:mx-0 bg-card border border-border px-3 py-1 rounded-full w-fit">
+            <div className="hero-element inline-block mx-auto lg:mx-0 bg-card shadow-inset-small px-4 py-2 rounded-full w-fit">
               <span className="text-sm font-medium text-accent">
                 Available for new opportunities
               </span>
             </div>
 
-            <h1 className="hero-element text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+            <h1 className="hero-element text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground">
               Hi, I'm <span className="text-accent">Kartik Verma</span>.
               <br />
               Full Stack Developer
@@ -103,14 +103,14 @@ export default function Hero() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto rounded-xl border-[#0A66C2]/30 bg-[#0A66C2]/5 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white dark:border-[#70B5F9]/30 dark:bg-[#70B5F9]/10 dark:text-[#70B5F9] dark:hover:bg-[#70B5F9] dark:hover:text-[#0f172a] transition-all group"
+                className="w-full sm:w-auto rounded-xl border-[var(--accent)]/30 bg-[var(--accent)]/5 text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-all group"
               >
                 <a
                   href="https://www.linkedin.com/in/kartik-verma-4b99012b8"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Linkedin className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  <Linkedin className="w-4 h-4 mr-2 transition-all duration-300 group-hover:scale-110 group-hover:text-white" />
                   Follow me on LinkedIn
                 </a>
               </Button>
@@ -122,14 +122,15 @@ export default function Hero() {
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative w-68 h-68 sm:w-80 sm:h-80 lg:w-125 lg:h-125">
-              <div className="absolute inset-0 bg-accent/20 blur-3xl animate-pulse" />
-
-              <div className="rounded-full w-full h-full bg-card border border-border overflow-hidden relative shadow-2xl flex items-center justify-center">
-                <img
-                  src="/final.png"
-                  alt="Kartik Verma"
-                  className="w-full h-full object-cover scale-110"
-                />
+              {/* Nested Neumorphism Depth */}
+              <div className="rounded-full w-full h-full bg-card shadow-extruded flex items-center justify-center p-3 sm:p-5">
+                <div className="rounded-full w-full h-full shadow-inset-deep overflow-hidden relative">
+                  <img
+                    src="/final.png"
+                    alt="Kartik Verma"
+                    className="w-full h-full object-cover scale-110"
+                  />
+                </div>
               </div>
             </div>
           </div>
