@@ -123,7 +123,7 @@ export default function Hero() {
           >
             <div className="relative w-68 h-68 sm:w-80 sm:h-80 lg:w-125 lg:h-125">
               {/* Nested Neumorphism Depth */}
-              <div className="rounded-full w-full h-full bg-card shadow-extruded flex items-center justify-center p-3 sm:p-5">
+              <div className="rounded-full w-full h-full bg-card shadow-extruded flex items-center justify-center p-1 sm:p-2">
                 <div className="rounded-full w-full h-full shadow-inset-deep overflow-hidden relative">
                   <img
                     src="/final.png"
